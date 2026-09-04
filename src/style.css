@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Manrope", sans-serif;
+  --font-body: "IBM Plex Sans", sans-serif;
+
+  --color-amber-50: #FBF2E6;
+  --color-amber-100: #F6E4CA;
+  --color-amber-200: #EFD0A2;
+  --color-amber-300: #E8BC7A;
+  --color-amber-400: #E0A64F;
+  --color-amber-500: #E49621;
+  --color-amber-600: #C88013;
+  --color-amber-700: #A26710;
+  --color-amber-800: #774C0C;
+  --color-amber-900: #4C3107;
+
+  --color-olive-50: #EFF6E4;
+  --color-olive-100: #D8EBBF;
+  --color-olive-200: #B9DA8A;
+  --color-olive-300: #99C955;
+  --color-olive-400: #729F32;
+  --color-olive-500: #51741F;
+  --color-olive-600: #446318;
+  --color-olive-700: #375014;
+  --color-olive-800: #293B0E;
+  --color-olive-900: #1A2609;
+
+  --color-ink: #201E1A;
+  --color-paper: #FCFCFA;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+}
+
+.hero-mark {
+  opacity: 0;
+  transform: scale(0.92);
+  animation: mark-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.hero-copy {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: rise 0.7s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes mark-in {
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes rise {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-mark {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .hero-copy {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+.accordion-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.accordion-item[data-open="true"] .accordion-chevron {
+  transform: rotate(180deg);
+}
+.accordion-chevron {
+  transition: transform 0.2s ease;
+}
+
+.lang-btn {
+  transition: color 0.15s ease;
+}
+.lang-btn[aria-pressed="true"] {
+  color: var(--color-olive-600);
+  font-weight: 700;
+}
+
+.chip input:checked + span {
+  background-color: var(--color-olive-600);
+  color: var(--color-paper);
+  border-color: var(--color-olive-600);
+}
+
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
